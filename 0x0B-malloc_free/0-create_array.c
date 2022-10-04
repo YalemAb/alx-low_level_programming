@@ -20,13 +20,12 @@ char *create_array(unsigned int size, char c)
 		{
 			ch[i] = c;
 		}
-		free(ch);
 		return (ch);
+		free(ch);
 	}
 	else
 	{
 		return (NULL);
 	}
-	free(ch);
 }
 
