@@ -33,9 +33,19 @@ char *str_concat(char *s1, char *s2)
 			{
 				ch[i] = s1[i];
 			}
-			for (i = 0; i < (unsigned int)strlen(s2); i++)
+			if (s1 != NULL)
 			{
-				ch[i + (unsigned int)strlen(s1)] = s2[i];
+				for (i = 0; i < (unsigned int)strlen(s2); i++)
+				{
+					ch[i + (unsigned int)strlen(s1)] = s2[i];
+				}
+			}
+			else
+			{
+				for (i = 0; i < (unsigned int)strlen(s2); i++)
+				{
+					ch[i] = s2[i];
+				}
 			}
 			return (ch);
 		}
