@@ -8,7 +8,6 @@
  *
  * Return: a pointer to the duplicated string, or NULL if str = NULL
  * or if insufficient memory was availableclear
- * 
  */
 char *_strdup(char *str)
 {
@@ -35,5 +34,4 @@ char *_strdup(char *str)
 			return (ch);
 		}
 	}
-	free(ch);
 }
