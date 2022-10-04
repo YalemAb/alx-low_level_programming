@@ -15,40 +15,38 @@ char *str_concat(char *s1, char *s2)
 	char *ch;
 	unsigned int i;
 
-	ch = malloc(strlen(s1) + strlen(s2) + 1);
-	if (ch == NULL)
+	if (s1 != NULL && s2 != NULL)
 	{
-		return (NULL);
+		ch = malloc(strlen(s1) + strlen(s2) + 1);
+		for (i = 0; i < (unsigned int)strlen(s1); i++)
+		{
+			ch[i] = s1[i];
+		}
+		for (i = 0; i < (unsigned int)strlen(s2); i++)
+		{
+			ch[i + (unsigned int)strlen(s1)] = s2[i];
+		}
+	}
+	else if (s1 == NULL)
+	{
+		ch = malloc(strlen(s2) + 1);
+		for (i = 0; i < (unsigned int)strlen(s2); i++)
+		{
+			ch[i] = s2[i];
+		}
+	}
+	else if (s2 == NULL)
+	{
+		ch = malloc(strlen(s1) + 1);
+		for (i = 0; i < (unsigned int)strlen(s1); i++)
+		{
+			ch[i] = s1[i];
+		}
 	}
 	else
 	{
-		if (s1 == NULL && s2 == NULL)
-		{
-			ch[0] = '\0';
-			return (ch);
-		}
-		else
-		{
-			if (s1 != NULL)
-			{
-				for (i = 0; i < (unsigned int)strlen(s1); i++)
-				{
-					ch[i] = s1[i];
-				}
-				for (i = 0; i < (unsigned int)strlen(s2); i++)
-				{
-					ch[i + (unsigned int)strlen(s1)] = s2[i];
-				}
-			}
-			else
-			{
-				for (i = 0; i < (unsigned int)strlen(s2); i++)
-				{
-					ch[i] = s2[i];
-				}
-			}
-
-			return (ch);
-		}
+		ch = malloc(sizeof(char));
+		ch[0] = '\0';
 	}
+	return (ch);
 }
