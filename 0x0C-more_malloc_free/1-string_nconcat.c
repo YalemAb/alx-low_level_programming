@@ -3,7 +3,9 @@
 #include <string.h>
 #include "main.h"
 /**
- * string_nconcat - concanest two strings
+ * string_nconcat - concanest two strings s1 & s2
+ * @s1: string 1
+ * @s2: string 2
  * @n: size of string s2 to concatnete
  *
  * Return: a pointer to the concatned string,
