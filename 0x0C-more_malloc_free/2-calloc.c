@@ -13,23 +13,10 @@
  */
 void *_calloc(unsigned int nmemb, unsigned int size)
 {
-	void *arr;
+	void *arr = malloc(size * nmemb);
 
-	if (nmemb == 0 || size == 0)
-	{
-		exit(1);
-	}
-
+	if (arr == NULL)
+		return (NULL);
 	else
-	{
-		arr = malloc(size * nmemb);
-		if (arr == NULL)
-		{
-			return (NULL);
-		}
-		else
-		{
-			return (arr);
-		}
-	}
+		return (arr);
 }
