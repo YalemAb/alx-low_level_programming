@@ -1,39 +1,65 @@
 #include "main.h"
 /**
- * times_table -  a function that prints the 9 times table, starting with 0
- * rone = row, cone = column, d = digits of current result
- * Return: times table
- * add extra space past single digit
- */
+* print_ndigit -  prints an n digit integer number using _putchar function
+* @x: Number to be printed
+* @n: Maximum expected number of digits
+*
+* Return: Nothing
+*/
+void print_ndigit(int x, int n)
+{
+	int i, tmp, _10n;
+
+	_10n = 1;
+	for (i = 1; i < n; i++)
+		_10n *= 10;
+	while (n > 1)
+	{
+		tmp = x / (_10n);
+		if (tmp > 0)
+		{
+			_putchar('0' + tmp);
+			x = x % (_10n);
+		}
+		n--;
+		_10n /= 10;
+	}
+	_putchar('0' + x);
+}
+/**
+* times_table -  prints the 9 times table, starting with 0.
+*
+* Return: Nothing
+*/
 void times_table(void)
 {
-	int rone, cone, d;
+	int i, j;
 
-	for (rone = 0; rone <= 9; rone++)
+	for (i = 0; i <= 9; ++i)
 	{
-		_putchar('0');
-		_putchar(',');
-		_putchar(' ');
-		for (cone = 1; cone <= 9; cone++)
+		for (j = 0; j <= 9; ++j)
 		{
-			d = (rone * cone);
-			if ((d / 10) > 0)
+			if ((i * j) < 10)
 			{
-				_putchar((d / 10) + '0');
+				if (j > 0)
+				{
+					_putchar(',');
+					_putchar(' ');
+					_putchar(' ');
+				}
+				print_ndigit((i * j), 2);
 			}
 			else
 			{
-				_putchar(' ');
-			}
-			_putchar((d % 10) + '0');
-
-			if (cone < 9)
-			{
-				_putchar(',');
-				_putchar(' ');
+				if (j > 0)
+				{
+					_putchar(',');
+					_putchar(' ');
+				}
+				print_ndigit((i * j), 2);
 			}
 		}
 		_putchar('\n');
 	}
-
 }
+
